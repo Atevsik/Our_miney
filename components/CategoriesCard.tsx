@@ -1,32 +1,36 @@
-type Category = {
-  name: string;
-  total: number;
-};
-
 type CategoriesCardProps = {
-  categories: Category[];
+  items: { name: string; total: number; formatted: string }[];
 };
 
-export default function CategoriesCard({
-  categories,
-}: CategoriesCardProps) {
+export default function CategoriesCard({ items }: CategoriesCardProps) {
   return (
-    <section className="rounded-2xl bg-white p-6 shadow-sm">
-      <h2 className="text-xl font-semibold text-gray-900">Категории</h2>
-
-      <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {categories.map((category) => (
-          <div
-            key={category.name}
-            className="rounded-xl border border-gray-100 p-4"
-          >
-            <p className="text-sm text-gray-500">{category.name}</p>
-            <h3 className="mt-2 text-xl font-bold text-gray-900">
-              ${category.total}
-            </h3>
-          </div>
-        ))}
+    <section className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-xl">
+      <div className="mb-4">
+        <h3 className="text-xl font-semibold">Категории</h3>
+        <p className="mt-1 text-sm text-white/55">
+          Сводка по категориям текущего бюджета
+        </p>
       </div>
+
+      {items.length === 0 ? (
+        <div className="rounded-2xl border border-dashed border-white/10 bg-black/20 p-5 text-sm text-white/50">
+          Категории появятся после добавления расходов.
+        </div>
+      ) : (
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          {items.map((category) => (
+            <div
+              key={category.name}
+              className="rounded-2xl border border-white/10 bg-black/20 p-4"
+            >
+              <div className="text-sm text-white/45">{category.name}</div>
+              <div className="mt-2 text-xl font-semibold">
+                {category.formatted}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

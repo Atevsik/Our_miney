@@ -1,18 +1,19 @@
-export default function Header() {
-  return (
-    <header className="rounded-2xl bg-white p-6 shadow-sm">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm text-gray-500">Добро пожаловать :3</p>
-          <h1 className="text-3xl font-bold text-gray-900">
-            Наш бюджет
-          </h1>
-        </div>
+type HeaderProps = {
+  title: string;
+  subtitle: string;
+};
 
-        <div className="rounded-xl bg-black px-4 py-2 text-sm font-medium text-white">
-          Budget Tracker
-        </div>
-      </div>
-    </header>
+export default function Header({ title, subtitle }: HeaderProps) {
+  return (
+    <section className="mb-6 rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur">
+      <p className="mb-2 text-xs uppercase tracking-[0.3em] text-white/45">
+        Finance App
+      </p>
+
+      <h1 className="text-3xl font-semibold sm:text-4xl">{title}</h1>
+      <p className="mt-2 max-w-2xl text-sm text-white/65 sm:text-base">
+        {subtitle}
+      </p>
+    </section>
   );
 }

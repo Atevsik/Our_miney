@@ -1,90 +1,95 @@
-"use client";
-
-import { useState } from "react";
-
 type AddExpenseFormProps = {
-  onAddExpense: (expense: {
-    title: string;
-    amount: number;
-    category: string;
-    date: string;
-  }) => void;
+  title: string;
+  amount: string;
+  category: string;
+  expenseDate: string;
+  categories: string[];
+  onTitleChange: (value: string) => void;
+  onAmountChange: (value: string) => void;
+  onCategoryChange: (value: string) => void;
+  onDateChange: (value: string) => void;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
 export default function AddExpenseForm({
-  onAddExpense,
+  title,
+  amount,
+  category,
+  expenseDate,
+  categories,
+  onTitleChange,
+  onAmountChange,
+  onCategoryChange,
+  onDateChange,
+  onSubmit,
 }: AddExpenseFormProps) {
-  const [title, setTitle] = useState("");
-  const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState("Food");
-  const [date, setDate] = useState("");
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!title.trim() || !amount || !date) {
-      return;
-    }
-
-    onAddExpense({
-      title: title.trim(),
-      amount: Number(amount),
-      category,
-      date,
-    });
-
-    setTitle("");
-    setAmount("");
-    setCategory("Food");
-    setDate("");
-  };
-
   return (
-    <section className="rounded-2xl bg-white p-6 shadow-sm">
-      <h2 className="text-xl font-semibold text-gray-900">Добавить расход</h2>
+    <form
+      onSubmit={onSubmit}
+      className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-xl"
+    >
+      <h3 className="text-xl font-semibold">Добавить расход</h3>
+      <p className="mt-1 text-sm text-white/55">
+        Новый расход попадёт внутрь выбранного бюджета.
+      </p>
 
-      <form className="mt-4 flex flex-col gap-4" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Название расхода"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="rounded-xl border border-gray-200 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-black focus:ring-1 focus:ring-black"
-        />
+      <div className="mt-5 flex flex-col gap-4">
+        <label className="flex flex-col gap-2">
+          <span className="text-sm text-white/65">Название</span>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => onTitleChange(e.target.value)}
+            placeholder="Например: Продукты"
+            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 outline-none placeholder:text-white/25 focus:border-white/30"
+          />
+        </label>
 
-        <input
-          type="number"
-          placeholder="Кол-во"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          className="rounded-xl border border-gray-200 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-black focus:ring-1 focus:ring-black"
-        />
+        <label className="flex flex-col gap-2">
+          <span className="text-sm text-white/65">Сумма</span>
+          <input
+            type="number"
+            min="0"
+            step="0.01"
+            value={amount}
+            onChange={(e) => onAmountChange(e.target.value)}
+            placeholder="Введите сумму"
+            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 outline-none placeholder:text-white/25 focus:border-white/30"
+          />
+        </label>
 
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="rounded-xl border border-gray-200 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-black focus:ring-1 focus:ring-black"
-        >
-          <option value="Food">Еда</option>
-          <option value="Transport">Транспорт</option>
-          <option value="Subscriptions">Подписки</option>
-          <option value="Shopping">Шоппинг</option>
-        </select>
+        <label className="flex flex-col gap-2">
+          <span className="text-sm text-white/65">Категория</span>
+          <select
+            value={category}
+            onChange={(e) => onCategoryChange(e.target.value)}
+            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 outline-none focus:border-white/30"
+          >
+            {categories.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </label>
 
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          className="rounded-xl border border-gray-200 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-black focus:ring-1 focus:ring-black"
-        />
+        <label className="flex flex-col gap-2">
+          <span className="text-sm text-white/65">Дата расхода</span>
+          <input
+            type="date"
+            value={expenseDate}
+            onChange={(e) => onDateChange(e.target.value)}
+            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 outline-none focus:border-white/30"
+          />
+        </label>
 
         <button
           type="submit"
-          className="rounded-xl bg-black px-4 py-3 font-medium text-white transition hover:opacity-90"
+          className="rounded-2xl bg-white px-5 py-3 font-semibold text-black"
         >
-          Добавить
+          Добавить расход
         </button>
-      </form>
-    </section>
+      </div>
+    </form>
   );
 }

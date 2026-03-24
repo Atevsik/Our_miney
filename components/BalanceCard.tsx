@@ -1,30 +1,20 @@
 type BalanceCardProps = {
-  income: number;
-  expenses: number;
+  label: string;
+  value: string;
+  valueClassName?: string;
 };
 
 export default function BalanceCard({
-  income,
-  expenses,
+  label,
+  value,
+  valueClassName = "",
 }: BalanceCardProps) {
-  const balance = income - expenses;
-
   return (
-    <section className="grid gap-4 md:grid-cols-3">
-      <div className="rounded-2xl bg-white p-6 shadow-sm">
-        <p className="text-sm text-gray-500">Доход</p>
-        <h2 className="mt-2 text-2xl font-bold text-gray-900">${income}</h2>
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-xl">
+      <div className="text-sm text-white/45">{label}</div>
+      <div className={`mt-2 text-2xl font-semibold ${valueClassName}`}>
+        {value}
       </div>
-
-      <div className="rounded-2xl bg-white p-6 shadow-sm">
-        <p className="text-sm text-gray-500">Расход</p>
-        <h2 className="mt-2 text-2xl font-bold text-red-600">${expenses}</h2>
-      </div>
-
-      <div className="rounded-2xl bg-white p-6 shadow-sm">
-        <p className="text-sm text-gray-500">Баланс</p>
-        <h2 className="mt-2 text-2xl font-bold text-green-600">${balance}</h2>
-      </div>
-    </section>
+    </div>
   );
 }
