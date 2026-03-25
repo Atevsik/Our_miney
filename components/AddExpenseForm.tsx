@@ -26,27 +26,27 @@ export default function AddExpenseForm({
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-xl"
+      className="rounded-[28px] border border-white/10 bg-white/8 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.24)] backdrop-blur-md"
     >
       <h3 className="text-xl font-semibold">Добавить расход</h3>
-      <p className="mt-1 text-sm text-white/55">
-        Новый расход попадёт внутрь выбранного бюджета.
+      <p className="mt-1 text-sm text-white/60">
+        Новый расход попадёт внутрь выбранного бюджета
       </p>
 
       <div className="mt-5 flex flex-col gap-4">
         <label className="flex flex-col gap-2">
-          <span className="text-sm text-white/65">Название</span>
+          <span className="text-sm text-white/75">Название</span>
           <input
             type="text"
             value={title}
             onChange={(e) => onTitleChange(e.target.value)}
             placeholder="Например: Продукты"
-            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 outline-none placeholder:text-white/25 focus:border-white/30"
+            className="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 outline-none placeholder:text-white/30 focus:border-sky-300/60"
           />
         </label>
 
         <label className="flex flex-col gap-2">
-          <span className="text-sm text-white/65">Сумма</span>
+          <span className="text-sm text-white/75">Сумма</span>
           <input
             type="number"
             min="0"
@@ -54,16 +54,16 @@ export default function AddExpenseForm({
             value={amount}
             onChange={(e) => onAmountChange(e.target.value)}
             placeholder="Введите сумму"
-            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 outline-none placeholder:text-white/25 focus:border-white/30"
+            className="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 outline-none placeholder:text-white/30 focus:border-sky-300/60"
           />
         </label>
 
         <label className="flex flex-col gap-2">
-          <span className="text-sm text-white/65">Категория</span>
+          <span className="text-sm text-white/75">Категория</span>
           <select
             value={category}
             onChange={(e) => onCategoryChange(e.target.value)}
-            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 outline-none focus:border-white/30"
+            className="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 outline-none focus:border-sky-300/60"
           >
             {categories.map((item) => (
               <option key={item} value={item}>
@@ -74,18 +74,18 @@ export default function AddExpenseForm({
         </label>
 
         <label className="flex flex-col gap-2">
-          <span className="text-sm text-white/65">Дата расхода</span>
+          <span className="text-sm text-white/75">Дата расхода</span>
           <input
             type="date"
             value={expenseDate}
             onChange={(e) => onDateChange(e.target.value)}
-            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 outline-none focus:border-white/30"
+            className="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 outline-none focus:border-sky-300/60"
           />
         </label>
 
         <button
           type="submit"
-          className="rounded-2xl bg-white px-5 py-3 font-semibold text-black"
+          className="rounded-2xl bg-sky-300 px-5 py-3 font-semibold text-slate-950 hover:bg-sky-200"
         >
           Добавить расход
         </button>

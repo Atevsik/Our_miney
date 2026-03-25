@@ -22,32 +22,32 @@ export default function BudgetForm({
   onReset,
 }: BudgetFormProps) {
   return (
-    <section className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-xl">
+    <section className="rounded-[28px] border border-white/10 bg-white/8 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.24)] backdrop-blur-md">
       <div className="mb-5">
         <h2 className="text-2xl font-semibold">Настройки бюджета</h2>
-        <p className="mt-1 text-sm text-white/55">
-          Название, валюта и сумма дохода.
+        <p className="mt-1 text-sm text-white/60">
+          Название, валюта и сумма дохода
         </p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
         <label className="flex flex-col gap-2">
-          <span className="text-sm text-white/65">Название бюджета</span>
+          <span className="text-sm text-white/75">Название бюджета</span>
           <input
             type="text"
             value={budgetName}
             onChange={(e) => onNameChange(e.target.value)}
             placeholder="Например: Личный бюджет"
-            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 outline-none placeholder:text-white/25 focus:border-white/30"
+            className="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 outline-none placeholder:text-white/30 focus:border-sky-300/60"
           />
         </label>
 
         <label className="flex flex-col gap-2">
-          <span className="text-sm text-white/65">Валюта</span>
+          <span className="text-sm text-white/75">Валюта</span>
           <select
             value={budgetCurrency}
             onChange={(e) => onCurrencyChange(e.target.value as Currency)}
-            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 outline-none focus:border-white/30"
+            className="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 outline-none focus:border-sky-300/60"
           >
             <option value="USD">USD — Доллар</option>
             <option value="GEL">GEL — Лари</option>
@@ -56,7 +56,7 @@ export default function BudgetForm({
         </label>
 
         <label className="flex flex-col gap-2 md:col-span-2">
-          <span className="text-sm text-white/65">Доход</span>
+          <span className="text-sm text-white/75">Доход</span>
           <input
             type="number"
             min="0"
@@ -64,7 +64,7 @@ export default function BudgetForm({
             value={budgetAmount}
             onChange={(e) => onAmountChange(e.target.value)}
             placeholder="Введите сумму"
-            className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 outline-none placeholder:text-white/25 focus:border-white/30"
+            className="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 outline-none placeholder:text-white/30 focus:border-sky-300/60"
           />
         </label>
       </div>
@@ -73,7 +73,7 @@ export default function BudgetForm({
         <button
           type="button"
           onClick={onSave}
-          className="rounded-2xl bg-white px-5 py-3 font-semibold text-black"
+          className="rounded-2xl bg-emerald-300 px-5 py-3 font-semibold text-slate-950 hover:bg-emerald-200"
         >
           Сохранить бюджет
         </button>
@@ -81,7 +81,7 @@ export default function BudgetForm({
         <button
           type="button"
           onClick={onReset}
-          className="rounded-2xl border border-white/10 bg-white/10 px-5 py-3 font-medium"
+          className="rounded-2xl border border-white/10 bg-white/10 px-5 py-3 font-medium hover:bg-white/15"
         >
           Сбросить изменения
         </button>

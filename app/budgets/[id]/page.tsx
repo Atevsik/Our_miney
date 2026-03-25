@@ -221,7 +221,7 @@ export default function BudgetDetailsPage() {
 
   if (isLoaded && !budget) {
     return (
-      <main className="min-h-screen bg-neutral-950 text-white">
+      <main className="min-h-screen w-full text-white">
         <div className="mx-auto w-full max-w-5xl px-4 py-5 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
             Бюджет не найден
@@ -242,20 +242,28 @@ export default function BudgetDetailsPage() {
   }));
 
   return (
-    <main className="min-h-screen bg-neutral-950 text-white">
-      <div className="mx-auto w-full max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+    <main className="min-h-screen text-white">
+      <div className="mx-auto w-full max-w-7xl px-4 py-5 pb-32 sm:px-6 lg:px-8">
         <Header
           title={budget.name}
           subtitle="Страница выбранного бюджета: настройки, расходы, категории и баланс."
         />
 
-        <div className="mb-5">
+        <div className="mb-5 flex flex-wrap gap-3">
           <button
             type="button"
             onClick={() => router.push("/budgets")}
-            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-2"
+            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-2.5 hover:bg-white/15"
           >
             ← Назад к бюджетам
+          </button>
+
+          <button
+            type="button"
+            onClick={() => router.push("/")}
+            className="rounded-2xl border border-white/10 bg-white/10 px-4 py-2.5 hover:bg-white/15"
+          >
+            На главную
           </button>
         </div>
 

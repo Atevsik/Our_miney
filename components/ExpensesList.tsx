@@ -39,14 +39,14 @@ export default function ExpensesList({
   onEditDateChange,
 }: ExpensesListProps) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-xl">
+    <div className="rounded-[28px] border border-white/10 bg-white/8 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.24)] backdrop-blur-md">
       <div className="mb-4">
         <h3 className="text-xl font-semibold">Список расходов</h3>
-        <p className="mt-1 text-sm text-white/55">{expenses.length} записей</p>
+        <p className="mt-1 text-sm text-white/60">{expenses.length} записей</p>
       </div>
 
       {expenses.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-white/10 bg-black/20 p-5 text-sm text-white/50">
+        <div className="rounded-2xl border border-dashed border-white/10 bg-slate-950/25 p-5 text-sm text-white/55">
           Пока нет расходов. Добавь первый.
         </div>
       ) : (
@@ -57,7 +57,7 @@ export default function ExpensesList({
             return (
               <div
                 key={expense.id}
-                className="rounded-2xl border border-white/10 bg-black/20 p-4"
+                className="rounded-2xl border border-white/10 bg-slate-950/25 p-4"
               >
                 {isEditing ? (
                   <div className="flex flex-col gap-3">
@@ -65,7 +65,7 @@ export default function ExpensesList({
                       type="text"
                       value={editTitle}
                       onChange={(e) => onEditTitleChange(e.target.value)}
-                      className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 outline-none focus:border-white/30"
+                      className="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 outline-none focus:border-sky-300/60"
                     />
 
                     <div className="grid gap-3 sm:grid-cols-2">
@@ -75,13 +75,13 @@ export default function ExpensesList({
                         step="0.01"
                         value={editAmount}
                         onChange={(e) => onEditAmountChange(e.target.value)}
-                        className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 outline-none focus:border-white/30"
+                        className="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 outline-none focus:border-sky-300/60"
                       />
 
                       <select
                         value={editCategory}
                         onChange={(e) => onEditCategoryChange(e.target.value)}
-                        className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 outline-none focus:border-white/30"
+                        className="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 outline-none focus:border-sky-300/60"
                       >
                         {categories.map((category) => (
                           <option key={category} value={category}>
@@ -95,14 +95,14 @@ export default function ExpensesList({
                       type="date"
                       value={editDate}
                       onChange={(e) => onEditDateChange(e.target.value)}
-                      className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 outline-none focus:border-white/30"
+                      className="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3 outline-none focus:border-sky-300/60"
                     />
 
                     <div className="flex flex-col gap-2 sm:flex-row">
                       <button
                         type="button"
                         onClick={() => onEditSave(expense.id)}
-                        className="rounded-2xl bg-white px-4 py-2 font-medium text-black"
+                        className="rounded-2xl bg-emerald-300 px-4 py-2 font-medium text-slate-950 hover:bg-emerald-200"
                       >
                         Сохранить
                       </button>
@@ -110,7 +110,7 @@ export default function ExpensesList({
                       <button
                         type="button"
                         onClick={onEditCancel}
-                        className="rounded-2xl border border-white/10 bg-white/10 px-4 py-2 font-medium"
+                        className="rounded-2xl border border-white/10 bg-white/10 px-4 py-2 font-medium hover:bg-white/15"
                       >
                         Отмена
                       </button>
@@ -122,7 +122,7 @@ export default function ExpensesList({
                       <div className="break-words text-base font-medium">
                         {expense.title}
                       </div>
-                      <div className="mt-1 text-sm text-white/55">
+                      <div className="mt-1 text-sm text-white/60">
                         {expense.category || "Другое"} • {expense.expenseDate}
                       </div>
                     </div>
@@ -136,7 +136,7 @@ export default function ExpensesList({
                         <button
                           type="button"
                           onClick={() => onEditStart(expense)}
-                          className="text-sm text-white/70 hover:text-white"
+                          className="text-sm text-sky-200 hover:text-sky-100"
                         >
                           Редактировать
                         </button>
@@ -144,7 +144,7 @@ export default function ExpensesList({
                         <button
                           type="button"
                           onClick={() => onDelete(expense.id)}
-                          className="text-sm text-red-300 hover:text-red-200"
+                          className="text-sm text-rose-300 hover:text-rose-200"
                         >
                           Удалить
                         </button>
